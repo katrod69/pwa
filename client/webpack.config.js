@@ -19,14 +19,12 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      new WorkboxPlugin.GenerateSW(),
       new MiniCssExtractPlugin(),
+
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Webpack Plugin'
-      }),
-      new WebpackPwaManifest({
-        template: "./index.html",
-        title: "Manifest Plugin"
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
@@ -56,11 +54,15 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: [MiniCssExtractPlugin.loader,  'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
-          exclude: /node_modules/,         
+          exclude: /node_modules|bower_components/,         
           use: {
             loader: 'babel-loader',
             options: {
