@@ -6,6 +6,9 @@ This is a progressive web application created with knowlege of web platform tech
 ## Installation
 To install this project download the starter code and deploy from heroku or use my deployed link and start writing.
 
+[
+](https://morning-fjord-69994-35db70622a07.herokuapp.com/)
+
 ## Usage
 This project best serves a user who wants to be able to write and retain notes even without internet service.
 
